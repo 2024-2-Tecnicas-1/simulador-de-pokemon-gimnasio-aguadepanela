@@ -1,43 +1,50 @@
 package simulador.pokemon;
 
-public class TipoPokemon extends Pokemon {
+public enum TipoPokemon {
+    FUEGO,
+    AGUA,
+    PLANTA,
+    ELECTRICO,
+    TIERRA,
+    VOLADOR,
+    PSICICO,
+    HIELO,
+    BICHO,
+    ROCA,
+    FANTASMA,
+    HADA,
+    LUCHADOR,
+    NORMAL,
+    ACERO
 
-    private final Tipo tipo; // El tipo es final, no puede cambiar una vez asignado
+    public double calcularFactorMultiplicado(TipoPokemon atacante, TipoPokemon defensor) {
+        switch (atacante) {
+            case FUEGO:
+                switch (defensor) {
+                    case AGUA:
+                    case ROCA:
+                    case ACERO:
+                        return 0.5;
+                    case HIELO:
+                    case PLANTA:
+                    case BICHO:
+                        return 2.0;
+                    default:
+                        return 1.0;
+                }
+            case AGUA:
+                switch (defensor) {
+                    case PLANTA:
+                        return 0.5;
+                    case FUEGO:
+                    case ROCA:
+                        return 2.0;
+                    default:
+                        return 1.0;
 
-    // Enumeración para los tipos de Pokémon
-    public enum Tipo {
-        FUEGO,
-        AGUA,
-        PLANTA,
-        ELECTRICO,
-        TIERRA,
-        VOLADOR,
-        PSICICO,
-        HIELO,
-        BICHO,
-        ROCA,
-        FANTASMA,
-        DRAGON,
-        HADA,
-        LUCHADOR,
-        NORMAL,
-        ACERO
-    }
+                }
+            default:
 
-    // Constructor
-    public TipoPokemon(String nombre, int salud, int ataque, String estado, int nivel, Tipo tipo) {
-        super(nombre, salud, ataque, estado, nivel); // Llama al constructor 
-        this.tipo = tipo; 
-    }
-
-    // Método para obtener el tipo de Pokémon
-    public Tipo getTipo() {
-        return tipo;
-    }
-
-    // Método toString para mostrar la información del Pokémon junto con su tipo
-    @Override
-    public String toString() {
-        return super.toString() + ", Tipo: " + tipo;
+        }
     }
 }
