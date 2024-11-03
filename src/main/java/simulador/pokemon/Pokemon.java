@@ -1,6 +1,6 @@
 package simulador.pokemon;
 
-public class Pokemon {
+public abstract class Pokemon {
 
     private String nombre;
     private int salud;
