@@ -1,6 +1,6 @@
 package simulador.pokemon;
 
-public class Vulpix{
+public class Rhyhorn{
     
 
 }
