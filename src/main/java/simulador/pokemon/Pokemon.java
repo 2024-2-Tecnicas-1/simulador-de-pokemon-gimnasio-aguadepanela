@@ -10,7 +10,7 @@ public abstract class Pokemon {
     private final TipoPokemon tipo;
 
     // Constructor
-    public Pokemon(String nombre, int salud, int ataque, String estado, int nivel,TipoPokemon tipo) {
+    public Pokemon(String nombre, int salud, int ataque, String estado, int nivel, TipoPokemon tipo) {
         this.nombre = nombre;
         this.salud = salud;
         this.ataque = ataque;
@@ -39,9 +39,10 @@ public abstract class Pokemon {
     public int getNivel() {
         return nivel;
     }
-    public TipoPokemon  getTipo() {
+
+    public TipoPokemon getTipo() {
         return tipo;
-        }
+    }
 
     // Setters
     public void setNombre(String nombre) {
@@ -64,5 +65,30 @@ public abstract class Pokemon {
         this.nivel = nivel;
     }
 
-    
+    public void evolucionar() {
+        if (getNivel() == 35) {
+
+            switch (getNombre()) {
+                case "Vulpix" ->
+                    setNombre("Ninetales");
+                case "Oddish" ->
+                    setNombre("Gloom");
+                case "Drowzee" ->
+                    setNombre("Hypno");
+                case "Magnemite" ->
+                    setNombre("Magneton");
+                case "Mankey" ->
+                    setNombre("Primeape");
+                case "Meowth" ->
+                    setNombre("Persian");
+                case "Poliwag" ->
+                    setNombre("Poliwhirl");
+                case "Rhyhorn" ->
+                    setNombre("Rhydon");
+                case "Spearoe" ->
+                    setNombre("Fearow");
+
+            }
+        }
+    }
 }
