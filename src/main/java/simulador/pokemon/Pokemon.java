@@ -64,8 +64,15 @@ public abstract class Pokemon {
     public void setNivel(int nivel) {
         this.nivel = nivel;
     }
+    public void entrenar() {
+        nivel += 1; // Incrementa el nivel en 1
+        System.out.println("Entrenamiento completo. Nivel actual: " + nivel);
+        if (nivel == 35){
+            evolucionar();
+        }
 
-    public void evolucionar() {
+    }
+    public void evolucionar() {// Muestra la evolucion
         if (getNivel() == 35) {
 
             switch (getNombre()) {
