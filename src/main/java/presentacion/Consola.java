@@ -29,8 +29,7 @@ public class Consola {
         // Lectura de datos desde disco duro:
         Object object = controlador.leer(NOMBRE_ARCHIVO);
         pokemones = (LinkedList<Pokemon>) object; // Supongamos que el objeto leído es una lista de Pokémon
-        // entrenadores = (LinkedList<Entrenador>) object; // Esto se debe manejar de forma separada.
-
+        
         Scanner lector = new Scanner(System.in);
         System.out.println("Simulador de batallas Pokemón");
         System.out.println("-------------------------------");
@@ -43,18 +42,30 @@ public class Consola {
                                3. Iniciar Batalla
                                4. Salir""");
             opcionMenu = lector.nextInt();
-            int opcionPokemon = 0;
-            int opcionEntrenador = 0;
+           
 
             switch (opcionMenu) {
                 case 1 -> {
                     do {
-                        System.out.println("Ingresa la operación");
-                        System.out.println("1. Adicionar Pokemon a la lista");
-                        System.out.println("2. Mostrar Pokemones");
-                        System.out.println("0. Salir");
+                        System.out.println("Gestionar Entrenador");
+                        System.out.println("""
+                        1. Registrar nuevo entrenador
+                        2. Ver lista de entrenadores
+                        3. Seleccionar un entrenador
+                        4. Volver al menu principal""");
+                        opcionEntrenador = lector.nextInt();
+                    switch (opcionEntrenador) {
+                        case 1 ->{
+                            System.out.println("Ingrese el nombre del entrenador.");
+                            String nombreEntrenador = lector.nextLine();
 
-                        opcionPokemon = lector.nextInt();
+                        }
+                            
+                            
+                    }
+
+                        
+                    } while (opcionEntrenador != 4);    
 
                         switch (opcionPokemon) {
                             case 1 -> {
@@ -114,16 +125,11 @@ public class Consola {
                 }
 
                 case 2 -> {
-                    do {
-                        System.out.println("Gestionar Entrenador");
-                        System.out.println("""
-                                                                   1. Registrar nuevo entrenador
-                                                                   2. Ver lista de entrenadores
-                                                                   3. Seleccionar un entrenador
-                                                                   4. Volver al menu principal""");
-                        opcionEntrenador = lector.nextInt();
+                    
+                        
+                       
                         // Implementar lógica para gestionar entrenadores
-                    } while (opcionEntrenador != 4);
+                    
                 }
 
                 case 3 -> {
