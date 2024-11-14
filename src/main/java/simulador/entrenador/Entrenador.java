@@ -4,7 +4,7 @@ import java.util.LinkedList;
 import java.util.Scanner;
 
 public class Entrenador {
-    private String nombre;
+    final private String nombre;
     private static Scanner sc = new Scanner(System.in);  
 
     // Constructor
