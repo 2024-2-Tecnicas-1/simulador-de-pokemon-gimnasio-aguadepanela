@@ -4,23 +4,7 @@ import java.util.LinkedList;
 import java.util.Scanner;
 
 public class Entrenador {
-<<<<<<< Updated upstream
     final private String nombre;
-=======
-
-    public static void listaEntrenadores(LinkedList<Entrenador> entrenadores) {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
-    public static void agregarEntrenador(LinkedList<Entrenador> entrenadores) {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
-    public static void agregarEntrenador(LinkedList<Entrenador> entrenadores) {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-    private String nombre;
->>>>>>> Stashed changes
     private static Scanner sc = new Scanner(System.in);  
     private static LinkedList<Entrenador> entrenadores = new LinkedList<>(); // Lista estática para almacenar entrenadores
 
@@ -43,23 +27,27 @@ public class Entrenador {
     // Método para agregar entrenadores a la lista
     public static void agregarEntrenador() {
         System.out.println("Ingrese el nombre del entrenador:");
-        String nombreEntrenador = sc.nextLine();
+        String nombreEntrenador = sc.nextLine().trim(); // Usar trim() para eliminar espacios extra
         
-        // Crear y agregar el nuevo entrenador a la lista
-        Entrenador nuevoEntrenador = new Entrenador(nombreEntrenador);
-        entrenadores.add(nuevoEntrenador);
-        
-        System.out.println("Entrenador '" + nombreEntrenador + "' agregado a la lista.");
-    }
-<<<<<<< Updated upstream
-=======
-
-    // Método  los entrenadores
-    public static void listaEntrenadores() {
-        System.out.println("Número de entrenadores: " + entrenadores.size());
-        for (Entrenador entrenador : entrenadores) {
-            System.out.println(entrenador);
+        if (nombreEntrenador.isEmpty()) {
+            System.out.println("El nombre del entrenador no puede estar vacío.");
+        } else {
+            // Crear y agregar el nuevo entrenador a la lista
+            Entrenador nuevoEntrenador = new Entrenador(nombreEntrenador);
+            entrenadores.add(nuevoEntrenador);
+            System.out.println("Entrenador '" + nombreEntrenador + "' agregado a la lista.");
         }
     }
->>>>>>> Stashed changes
+
+    // Método para mostrar la lista de entrenadores
+    public static void listaEntrenadores() {
+        if (entrenadores.isEmpty()) {
+            System.out.println("No hay entrenadores en la lista.");
+        } else {
+            System.out.println("Número de entrenadores: " + entrenadores.size());
+            for (Entrenador entrenador : entrenadores) {
+                System.out.println(entrenador);
+            }
+        }
+    }
 }
