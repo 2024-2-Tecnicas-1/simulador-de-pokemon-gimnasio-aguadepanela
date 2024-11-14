@@ -63,7 +63,7 @@ public static Entrenador seleccionarEntrenador() {
     }
 
     String entrada = sc.nextLine();
-    if (hasNextInt()) { // Verifica si la entrada es un número
+    if (!hasNextInt()) { // Verifica si la entrada es un número
         System.out.println("Entrada inválida. Debe ingresar un número.");
         return null;
     }
