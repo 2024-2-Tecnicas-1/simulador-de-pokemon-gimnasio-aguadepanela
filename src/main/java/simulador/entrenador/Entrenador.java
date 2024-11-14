@@ -51,32 +51,34 @@ public class Entrenador {
         }
     } 
     // Método para seleccionar un entrenador de la lista
-public static Entrenador seleccionarEntrenador() {
-    if (entrenadores.isEmpty()) {
-        System.out.println("No hay entrenadores disponibles para seleccionar.");
-        return null; // Retorna null si no hay entrenadores
+    public static Entrenador seleccionarEntrenador(List<Entrenador> entrenadores, Scanner sc) {
+        if (entrenadores.isEmpty()) {
+            System.out.println("No hay entrenadores disponibles para seleccionar.");
+            return null; // Retorna null si no hay entrenadores
+        }
+    
+        System.out.println("Seleccione el número del entrenador:");
+        for (int i = 0; i < entrenadores.size(); i++) {
+            System.out.println((i + 1) + ". " + entrenadores.get(i).getNombre());
+        }
+    
+        int seleccion;
+        try {
+            String entrada = sc.nextLine();
+            seleccion = Integer.parseInt(entrada); // Intenta convertir la entrada a un número
+        } catch (NumberFormatException e) {
+            System.out.println("Entrada inválida. Debe ingresar un número.");
+            return null;
+        }
+    
+        if (seleccion < 1 || seleccion > entrenadores.size()) {
+            System.out.println("Selección fuera de rango.");
+            return null;
+        }
+    
+        Entrenador entrenadorSeleccionado = entrenadores.get(seleccion - 1);
+        System.out.println("Entrenador seleccionado: " + entrenadorSeleccionado.getNombre());
+        return entrenadorSeleccionado;
     }
-
-    System.out.println("Seleccione el número del entrenador:");
-    for (int i = 0; i < entrenadores.size(); i++) {
-        System.out.println((i + 1) + ". " + entrenadores.get(i).getNombre());
-    }
-
-    String entrada = sc.nextLine();
-    if (!hasNextInt()) { // Verifica si la entrada es un número
-        System.out.println("Entrada inválida. Debe ingresar un número.");
-        return null;
-    }
-
-    int seleccion = Integer.parseInt(entrada);
-    if (seleccion < 1 || seleccion > entrenadores.size()) {
-        System.out.println("Selección fuera de rango.");
-        return null;
-    }
-
-    Entrenador entrenadorSeleccionado = entrenadores.get(seleccion - 1);
-    System.out.println("Entrenador seleccionado: " + entrenadorSeleccionado.getNombre());
-    return entrenadorSeleccionado;
-}
 
 }
