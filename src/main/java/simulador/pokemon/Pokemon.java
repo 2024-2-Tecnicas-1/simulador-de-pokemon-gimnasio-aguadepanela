@@ -64,37 +64,101 @@ public abstract class Pokemon {
     public void setNivel(int nivel) {
         this.nivel = nivel;
     }
+    public void atacar(Pokemon oponente) {
+        double multiplicador = TipoPokemon.calcularFactorMultiplicador(this.tipo, oponente.getTipo());
+    int daño = (int) (this.ataque * multiplicador);
+    oponente.recibirDaño(daño);
+    System.out.println(this.nombre + " ataca a " + oponente.getNombre() + " causando " + daño + " de daño.");
+    }
+
+    public void recibirDaño(int daño) {
+        this.salud -= daño;
+        if (this.salud < 0) {
+            this.salud = 0; 
+        }
+        System.out.println(this.nombre + " recibe " + daño + " de daño. Salud restante: " + this.salud);
+    }
+
     public void entrenar() {
-        nivel += 1; // Incrementa el nivel en 1
-        System.out.println("Entrenamiento completo. Nivel actual: " + nivel);
-        if (nivel == 35){
+        setNivel(getNivel() + 1);
+        setAtaque(getAtaque() + 1);
+        setSalud(getSalud() + 1);
+        System.out.println("""
+                           Entrenamiento completo. 
+                           Nivel actual: """ + nivel +
+                           "Ataque actual:" + ataque +
+                           "Salud actual:" + salud);
+        if (nivel == 35) {
             evolucionar();
         }
-
     }
-    public void evolucionar() {// Muestra la evolucion
-        if (getNivel() == 35) {
 
-            switch (getNombre()) {
-                case "Vulpix" ->
+    private void evolucionar() { // Muestra la evolucion
+        if (nivel == 35) {
+            switch (nombre) {
+                case "Vulpix" -> {
                     setNombre("Ninetales");
-                case "Oddish" ->
+                    setSalud(73);
+                    setAtaque(75);
+                    setEstado("Bueno");
+                    setNivel(35);
+                }
+                case "Oddish" -> {
                     setNombre("Gloom");
-                case "Drowzee" ->
+                    setSalud(79);
+                    setAtaque(84);
+                    setEstado("Bueno");
+                    setNivel(35);
+                }
+                case "Drowzee" -> {
                     setNombre("Hypno");
-                case "Magnemite" ->
+                    setSalud(94);
+                    setAtaque(82);
+                    setEstado("Bueno");
+                    setNivel(35);
+                }
+                case "Magnemite" -> {
                     setNombre("Magneton");
-                case "Mankey" ->
+                    setSalud(58);
+                    setAtaque(69);
+                    setEstado("Bueno");
+                    setNivel(35);
+                }
+                case "Mankey" -> {
                     setNombre("Primeape");
-                case "Meowth" ->
+                    setSalud(74);
+                    setAtaque(114);
+                    setEstado("Bueno");
+                    setNivel(35);
+                }
+                case "Meowth" -> {
                     setNombre("Persian");
-                case "Poliwag" ->
+                    setSalud(74);
+                    setAtaque(79);
+                    setEstado("Bueno");
+                    setNivel(35);
+                }
+                case "Poliwag" -> {
                     setNombre("Poliwhirl");
-                case "Rhyhorn" ->
+                    setSalud(74);
+                    setAtaque(84);
+                    setEstado("Bueno");
+                    setNivel(35);
+                }
+                case "Rhyhorn" -> {
                     setNombre("Rhydon");
-                case "Spearoe" ->
+                    setSalud(114);
+                    setAtaque(119);
+                    setEstado("Bueno");
+                    setNivel(35);
+                }
+                case "Spearow" -> {
                     setNombre("Fearow");
-
+                    setSalud(74);
+                    setAtaque(114);
+                    setEstado("Bueno");
+                    setNivel(35);
+                }
             }
         }
     }

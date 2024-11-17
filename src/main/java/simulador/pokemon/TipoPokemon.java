@@ -18,7 +18,7 @@ public enum TipoPokemon {
     HIELO,
     FANTASMA;
 
-    public double calcularFactorMultiplicador(TipoPokemon atacante, TipoPokemon defensor) {
+    public static double calcularFactorMultiplicador(TipoPokemon atacante, TipoPokemon defensor) {
         switch (atacante) {
             case FUEGO -> {
                 return switch (defensor) {

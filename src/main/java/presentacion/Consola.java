@@ -59,16 +59,14 @@ public class Consola {
                         3. Seleccionar un entrenador
                         4. Volver al menú principal""");
                         opcionEntrenador = lector.nextInt();
-                        lector.nextLine(); // Consumir la nueva línea
+                        
 
                         switch (opcionEntrenador) {
                             case 1 -> Entrenador.agregarEntrenador();
 
                             case 2 -> Entrenador.listaEntrenadores();
 
-                            case 3 -> {
-                                // Lógica para seleccionar un entrenador
-                            }
+                            case 3 -> Entrenador.agregarEntrenador();
 
                             case 4 -> System.out.println("Volviendo al menú principal...");
 
