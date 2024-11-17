@@ -62,11 +62,12 @@ public class Consola {
                         
 
                         switch (opcionEntrenador) {
-                            case 1 -> Entrenador.agregarEntrenador();
-
+                            case 1 -> {Entrenador.agregarEntrenador();
+                            Entrenador.guardarEntrenadores(NOMBRE_ARCHIVO);
+                            }
                             case 2 -> Entrenador.listaEntrenadores();
 
-                            case 3 -> Entrenador.agregarEntrenador();
+                            case 3 -> Entrenador.seleccionarEntrenador(entrenadores, lector);
 
                             case 4 -> System.out.println("Volviendo al menú principal...");
 
@@ -132,7 +133,7 @@ public class Consola {
                 }
 
                 case 3 -> {
-                    // Implementar iniciar batalla
+                    
                 }
 
                 case 4 -> System.out.println("Saliendo del simulador. ¡Hasta luego!");
