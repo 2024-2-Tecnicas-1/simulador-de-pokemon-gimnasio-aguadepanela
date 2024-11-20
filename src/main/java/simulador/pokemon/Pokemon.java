@@ -2,12 +2,12 @@ package simulador.pokemon;
 
 public abstract class Pokemon {
 
-    private String nombre;
-    private int salud;
-    private int ataque;
-    private String estado;
-    private int nivel;
-    private final TipoPokemon tipo;
+    private String nombre; // El nombre del Pokémon
+    private int salud; // Puntos de vida del Pokémon
+    private int ataque; // Potencia base de los ataques del Pokémon
+    private String estado; // Indica el estado del Pokémon
+    private int nivel; // Nivel del Pokémon
+    private final TipoPokemon tipo; // Tipo elemental del Pokémon
 
     // Constructor
     public Pokemon(String nombre, int salud, int ataque, String estado, int nivel, TipoPokemon tipo) {
@@ -64,36 +64,41 @@ public abstract class Pokemon {
     public void setNivel(int nivel) {
         this.nivel = nivel;
     }
+
+    // Método para atacar a un oponente
     public void atacar(Pokemon oponente) {
-        double multiplicador = TipoPokemon.calcularFactorMultiplicador(this.tipo, oponente.getTipo());
-    int daño = (int) (this.ataque * multiplicador);
-    oponente.recibirDaño(daño);
-    System.out.println(this.nombre + " ataca a " + oponente.getNombre() + " causando " + daño + " de daño.");
+        double multiplicador = TipoPokemon.obtenerMultiplicadorDeDaño(tipo, tipo);
+        int daño = (int) (this.ataque * multiplicador);
+        oponente.recibirDaño(daño);
+        System.out.println(this.nombre + " ataca a " + oponente.getNombre() + " causando " + daño + " de daño.");
     }
 
+    // Método para recibir daño
     public void recibirDaño(int daño) {
         this.salud -= daño;
         if (this.salud < 0) {
-            this.salud = 0; 
+            this.salud = 0;
         }
         System.out.println(this.nombre + " recibe " + daño + " de daño. Salud restante: " + this.salud);
     }
 
+    // Método para entrenar y mejorar estadísticas
     public void entrenar() {
         setNivel(getNivel() + 1);
         setAtaque(getAtaque() + 1);
         setSalud(getSalud() + 1);
-        System.out.println("""
-                           Entrenamiento completo. 
-                           Nivel actual: """ + nivel +
-                           "Ataque actual:" + ataque +
-                           "Salud actual:" + salud);
+        System.out.println(""" 
+            Entrenamiento completo. 
+            Nivel actual: """ + nivel + "\n"
+                + "Ataque actual: " + ataque + "\n"
+                + "Salud actual: " + salud);
         if (nivel == 35) {
             evolucionar();
         }
     }
 
-    private void evolucionar() { // Muestra la evolucion
+    // Método privado para evolucionar
+    private void evolucionar() {
         if (nivel == 35) {
             switch (nombre) {
                 case "Vulpix" -> {
