@@ -20,12 +20,13 @@ public class Consola {
         Object object = controlador.leer(NOMBRE_ARCHIVO);
         if (object instanceof LinkedList) {
             pokemones = (LinkedList<Pokemon>) object;
+            entrenadores = (LinkedList<Entrenador>) ((LinkedList) object).get(1);
         } else {
             System.out.println("No se pudo cargar la lista de Pokémones. Se creará una nueva.");
             pokemones = new LinkedList<>();
         }
 
-        int opcionMenu; 
+        int opcionMenu;
         Scanner sc = new Scanner(System.in);
 
         do {
@@ -48,34 +49,67 @@ public class Consola {
                             3. Seleccionar un entrenador
                             4. Volver al menú principal
                             """);
-                int opcionEntrenador;
-                opcionEntrenador= sc.nextInt();
-                do {
-                    switch (opcionEntrenador) {
-                        case 1 ->{
-                            Entrenador.agregarEntrenador();
-                            Entrenador.guardarEntrenadores(entrenadores, NOMBRE_ARCHIVO);
-                            opcionEntrenador = 4;
+                    int opcionEntrenador;
+                    opcionEntrenador = sc.nextInt();
+                    do {
+                        switch (opcionEntrenador) {
+                            case 1 -> {
+                                Entrenador.agregarEntrenador();
+                                Entrenador.guardarEntrenadores(entrenadores, NOMBRE_ARCHIVO);
+                                controlador.guardar(entrenadores, NOMBRE_ARCHIVO);
+                                controlador.guardar(pokemones, NOMBRE_ARCHIVO);
+                                opcionEntrenador = 4;
+                            }
+                            case 2 -> {
+                                Entrenador.listaEntrenadores();
+                                opcionEntrenador = 4;
+                            }
+                            case 3 -> {
+                                Entrenador.gestionarEntrenador(entrenadores, sc);
+                                opcionEntrenador = 4;
+                            }
+                            case 4 -> 
+                                System.out.println("Volver al menú principal");
                         }
-                        case 2->{
-                            Entrenador.listaEntrenadores();
-                            opcionEntrenador = 4;
-                        }   
-                        case 3->{
-                            Entrenador.gestionarEntrenador(entrenadores, sc);
-                            opcionEntrenador = 4;
-                        }   
-                        case 4 -> System.out.println("Volver al menú principal");  
-                    }
-                }while(opcionEntrenador != 4);        
+                    } while (opcionEntrenador != 4);
                 }
                 case 2 -> {
                     System.out.println("Gestionar Pokémones");
                     System.out.println("""
-                            1. Ver todos los Pokémones registrados
+                            1. Ver todos los Pokémones disponibles
                             2. Registrar nuevo Pokémon
                             3. Volver al menú principal
                             """);
+                    int opcionPokemon;
+                    opcionPokemon = sc.nextInt();
+                    do {
+                        switch (opcionPokemon) {
+                            case 1 -> {
+                                System.out.println("""
+                                    Drowzee
+                                    Magnemite
+                                    Mankey
+                                    Meowth
+                                    Oddish
+                                    Poliwag
+                                    Rhyhorn
+                                    Spearow
+                                    Vulpix
+                                    """);
+                            }
+                            case 2 -> {
+                                System.out.println("Debes tener seleccionado un entrenador para poder registrar un nuevo Pokémon. Por favor, selecciona un entrenador en la sección de gestión de entrenadores.");
+                            }
+                            case 3 -> {
+                                System.out.println("Volver al menú principal");
+                                opcionPokemon = 3;
+                            }
+                        }
+                    } while (opcionPokemon != 3);
+
+                    // Después de agregar un nuevo Pokémon, guardar ambas listas
+                    controlador.guardar(entrenadores, NOMBRE_ARCHIVO);
+                    controlador.guardar(pokemones, NOMBRE_ARCHIVO);
                 }
                 case 3 -> {
                     System.out.println("Iniciar Batalla");
@@ -87,15 +121,18 @@ public class Consola {
                             5. Comenzar batalla
                             6. Volver al menú principal
                             """);
+                    int opcionBatalla; 
+                    opcionBatalla = sc.nextInt();       
                 }
-                case 4 -> {System.out.println("Saliendo del simulador...");
-            
-            }
-                default -> System.out.println("Opción no válida. Intente de nuevo.");
+                case 4 -> {
+                    System.out.println("Saliendo del simulador...");
+
+                }
+                default -> 
+                    System.out.println("Opción no válida. Intente de nuevo.");
             }
 
         } while (opcionMenu != 4);
 
-      
     }
 }

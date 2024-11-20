@@ -224,6 +224,7 @@ public class Entrenador {
             switch (opcion) {
                 case 1:
                     entrenador.agregarPokemon();
+                    
                     break;
                 case 2:
                     entrenador.entrenarPokemon();
