@@ -115,6 +115,13 @@ public abstract class Pokemon {
                     setEstado("Bueno");
                     setNivel(35);
                 }
+                case "Koffing" -> {
+                    setNombre("Weezing");
+                    setSalud(74);
+                    setAtaque(99);
+                    setEstado("Bueno");
+                    setNivel(35);
+                }
                 case "Drowzee" -> {
                     setNombre("Hypno");
                     setSalud(94);
