@@ -117,6 +117,7 @@ public class Consola {
                     System.out.println("""
                             1. Iniciar batalla 
                             2. Volver al menú principal
+                            NOTA:Para iniciar la batalla,debes tener almenos 3 entrenadores guardados y que tenga almenos 1 pokemon.
                             """);
                     int opcionBatalla; 
                     opcionBatalla = sc.nextInt();    
@@ -125,10 +126,12 @@ public class Consola {
                             case 1 ->{
                             Batalla.iniciarBatalla(entrenadores);   
                             } 
-                                
+                            case 2 ->{
+                                opcionBatalla = 2;
+                            }    
                                
                         }
-                    }while(opcionBatalla != 6);
+                    }while(opcionBatalla != 2);
                 }
                 case 4 -> {
                     System.out.println("Saliendo del simulador...");
