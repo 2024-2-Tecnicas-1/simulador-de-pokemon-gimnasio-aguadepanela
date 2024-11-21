@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Scanner;
 
 import logicaNegocio.ArchivosControlador;
+import simulador.batalla.Batalla;
 import simulador.entrenador.Entrenador;
 import simulador.pokemon.Pokemon;
 
@@ -107,22 +108,27 @@ public class Consola {
                         }
                     } while (opcionPokemon != 3);
 
-                    // Después de agregar un nuevo Pokémon, guardar ambas listas
+                   
                     controlador.guardar(entrenadores, NOMBRE_ARCHIVO);
                     controlador.guardar(pokemones, NOMBRE_ARCHIVO);
                 }
                 case 3 -> {
                     System.out.println("Iniciar Batalla");
                     System.out.println("""
-                            1. Elegir entrenador 1
-                            2. Elegir entrenador 2
-                            3. Seleccionar Pokémon de entrenador 1
-                            4. Seleccionar Pokémon de entrenador 2
-                            5. Comenzar batalla
-                            6. Volver al menú principal
+                            1. Iniciar batalla 
+                            2. Volver al menú principal
                             """);
                     int opcionBatalla; 
-                    opcionBatalla = sc.nextInt();       
+                    opcionBatalla = sc.nextInt();    
+                    do {
+                        switch (opcionBatalla) {
+                            case 1 ->{
+                            Batalla.iniciarBatalla(entrenadores);   
+                            } 
+                                
+                               
+                        }
+                    }while(opcionBatalla != 6);
                 }
                 case 4 -> {
                     System.out.println("Saliendo del simulador...");
